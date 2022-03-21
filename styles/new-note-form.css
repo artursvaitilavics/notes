@@ -1,0 +1,61 @@
+#new-note-container {
+  background-color: rgb(184, 219, 197);
+  border-radius: 0px 10px 10px 10px;
+  padding: 0px 5px 15px 5px;
+  margin: 0px 17px 15px 17px;
+  position: relative;
+  animation-name: grow;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform-origin: left top;
+
+  
+  /* animation: move 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); delay iteration-count direction fill-mode; */
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0, 0);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+#new-note-container-srhink {
+  background-color: rgb(184, 219, 197);
+  border-radius: 0px 10px 10px 10px;
+  padding: 0px 5px 15px 5px;
+  margin: 0px 17px 15px 17px;
+  position: absolute;
+  animation-duration: 0.4s;
+  animation-name: shrink;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform-origin: 0 0;
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(0, 0);
+  }
+}
+
+/* contents of new note bubble */
+
+#new-note-text-area {
+  color: rgb(59, 59, 59);
+  font-size: large;
+  margin: 15px 10px 5px 10px;
+  width: 97%;
+  height: 80px;
+  border: none;
+  border-radius: 10px;
+}
+
+#btn-save-note {
+  margin: 5px 10px 0px 10px;
+  width: 97.5%;
+}
