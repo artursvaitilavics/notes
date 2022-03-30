@@ -9,13 +9,14 @@ import { Notes } from "./notes.mjs";
 //   },
 // ];
 
-const notes = new Notes()
+const notes = new Notes();
 
-const temPNotes = notes.getNotes()
+const temPNotes = notes.getNotes();
 
 const createNoteDomElement = (note, notesElement) => {
   const noteElement = document.createElement("div");
-  const checkboxElement = document.createElement("input");
+  // const checkboxElement = document.createElement("input");
+  const checkboxElement = document.createElement("div");
   const textElement = document.createElement("input");
   const btnExpandElement = document.createElement("button");
   const btnDeleteElement = document.createElement("button");
@@ -23,7 +24,26 @@ const createNoteDomElement = (note, notesElement) => {
   noteElement.classList.add("note-container");
   noteElement.id = note.id;
   checkboxElement.setAttribute("type", "checkbox");
-  checkboxElement.checked = note.selected;
+
+  let selected = note.selected;
+  const setSelected = (selected) => {
+    if (selected) {
+
+      checkboxElement.classList = []
+      checkboxElement.classList.add("selected");
+    } else {
+      checkboxElement.classList = []
+      checkboxElement.classList.add("unselected");
+    }
+  }
+
+  setSelected(selected)
+
+  checkboxElement.addEventListener('click', ()=>{
+    selected = !selected;
+    setSelected(selected)
+  })
+  // checkboxElement.checked = note.selected;
   textElement.value = note.text;
   btnExpandElement.id = "btn-expand";
   btnDeleteElement.classList.add("btn-delete");
@@ -43,11 +63,12 @@ const createNoteDomElement = (note, notesElement) => {
   noteElement.appendChild(textElement);
   noteElement.appendChild(btnExpandElement);
   noteElement.appendChild(btnDeleteElement);
+
   notesElement.appendChild(noteElement);
 };
 
 const renderNotes = (notesElement) => {
-  console.log(temPNotes)
+  console.log(temPNotes);
   try {
     temPNotes.forEach((note) => {
       // console.log()

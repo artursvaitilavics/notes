@@ -4,8 +4,28 @@
   margin-top: 15px;
   width: 908px;
   transform: translateX(-10px);
-
   transition: all 0.3s;
+}
+
+.note-container:nth-child(odd) {
+  background-color: rgb(245, 240, 240);
+}
+
+.selected, .unselected{
+  float: left;
+  width: 35px;
+  height: 35px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.selected{
+  background-color: aqua;
+}
+.unselected{
+  background-color: rgb(255, 255, 255);
 }
 
 .note-container > button,
@@ -17,7 +37,4 @@ input {
 
 .note-container > button {
   width: 40px;
-}
-.note-container:nth-child(odd) {
-  background-color: rgb(250, 250, 250);
 }
