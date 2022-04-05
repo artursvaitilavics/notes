@@ -1,4 +1,7 @@
 import { setNewButtonDefault, setNotClicked } from "../app.mjs";
+import { Note } from "./note.mjs";
+import { Notes } from "./notes.mjs";
+// import { generateID } from "./generate-id.mjs";
 
 const containerElement = document.querySelector("#new-note");
 const newNoteContainer = document.querySelector("#new-note-container");
@@ -8,7 +11,6 @@ const newNoteObject = {
   destroyId: "new-note-container-srhink",
 };
 
-// New note not working properly, adds more than one window for typing new note
 const displayNewNoteElement = () => {
   if (newNoteContainer === null) {
     const newNoteElement = document.createElement("div");
@@ -23,7 +25,14 @@ const displayNewNoteElement = () => {
     btnSaveElement.id = "btn-save-note";
 
     btnSaveElement.addEventListener("click", () => {
-      console.log("save note clicked");
+      // const generateId = 
+      const note = new Note(false, textElement.value);
+      const notes = new Notes();
+
+
+      console.log("Before calling Notes");
+      console.log(notes.addNote(note));
+      console.log("After calling Notes");
       destroyNewNoteelement(setNewButtonDefault);
       setNotClicked();
     });

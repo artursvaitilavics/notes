@@ -1,5 +1,8 @@
-export function Note(selected, id, text) {
+import { GenerateID } from "./generate-id.mjs";
+
+export function Note(selected, text) {
+  const generateID = new GenerateID();
   this.selected = selected;
-  this.id = id;
+  this.id = generateID.id();
   this.text = text;
 }

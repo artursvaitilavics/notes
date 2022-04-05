@@ -1,22 +1,17 @@
 import { Note } from "./note.mjs";
 
-export function Notes() {
-  const note1 = new Note(
-    true,
-    1101110111,
-    "this is my first note ever, about anything!"
-  );
+export function Notes() {}
 
-  const note2 = new Note(false, 490239200, "I don't see how war is my fault.");
+Notes.notes = [
+  new Note(true, "this is my first note ever, about anything!"),
+  new Note(false, "I don't see how war is my fault."),
+];
 
-  this.notes = [note1, note2];
+Notes.prototype.addNote = function (note) {
+  Notes.notes.push(note);
+  return Notes.notes;
+};
 
-  this.addNote = function () {
-    this.notes.push(note);
-    return this.notes;
-  };
-
-  this.getNotes = function () {
-    return this.notes;
-  };
-}
+Notes.prototype.getNotes = function () {
+  return Notes.notes;
+};

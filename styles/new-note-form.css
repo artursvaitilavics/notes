@@ -9,7 +9,6 @@
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   transform-origin: left top;
 
-  
   /* animation: move 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); delay iteration-count direction fill-mode; */
 }
 
@@ -56,6 +55,11 @@
 }
 
 #btn-save-note {
+  background-color: rgb(151, 200, 208);
   margin: 5px 10px 0px 10px;
   width: 97.5%;
+  transition: 0.3s;
+}
+#btn-save-note:hover {
+  background-color: rgb(128, 196, 207);
 }
