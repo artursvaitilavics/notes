@@ -1,21 +1,11 @@
 import { Notes } from "./notes.mjs";
 
-// const temPNotes = [
-//   { selected: true, id: 4434, text: "some text of the first note" },
-//   {
-//     selected: true,
-//     id: 5983,
-//     text: "bestest of all the texts of the first second",
-//   },
-// ];
-
 const notes = new Notes();
 
 const temPNotes = notes.getNotes();
 
 const createNoteDomElement = (note, notesElement) => {
   const noteElement = document.createElement("div");
-  // const checkboxElement = document.createElement("input");
   const checkboxElement = document.createElement("div");
   const textElement = document.createElement("input");
   const btnExpandElement = document.createElement("button");
@@ -26,23 +16,24 @@ const createNoteDomElement = (note, notesElement) => {
   checkboxElement.setAttribute("type", "checkbox");
 
   let selected = note.selected;
+
   const setSelected = (selected) => {
     if (selected) {
-
-      checkboxElement.classList = []
+      checkboxElement.classList = [];
       checkboxElement.classList.add("selected");
     } else {
-      checkboxElement.classList = []
+      checkboxElement.classList = [];
       checkboxElement.classList.add("unselected");
     }
-  }
+  };
 
-  setSelected(selected)
+  setSelected(selected);
 
-  checkboxElement.addEventListener('click', ()=>{
+  checkboxElement.addEventListener("click", () => {
     selected = !selected;
-    setSelected(selected)
-  })
+    setSelected(selected);
+  });
+
   // checkboxElement.checked = note.selected;
   textElement.value = note.text;
   btnExpandElement.id = "btn-expand";
@@ -52,11 +43,11 @@ const createNoteDomElement = (note, notesElement) => {
   btnDeleteElement.innerHTML = "D"; //'should be proper imaga
 
   btnDeleteElement.addEventListener("click", (event) => {
-    notes = notes.filter(
-      (element) => element.id !== event.target.parentNode.id
-    );
-    clearNotesElement();
-    renderNotes();
+
+    const noteId = event.target.parentNode.id;
+    notes.removeNote(noteId)
+    clearNotesElement(notesElement);
+    renderNotes(notesElement);
   });
 
   noteElement.appendChild(checkboxElement);
@@ -68,11 +59,8 @@ const createNoteDomElement = (note, notesElement) => {
 };
 
 const renderNotes = (notesElement) => {
-  console.log(temPNotes);
   try {
-    temPNotes.forEach((note) => {
-      // console.log()
-
+    notes.getNotes().forEach((note) => {
       createNoteDomElement(note, notesElement);
     });
   } catch (error) {
@@ -80,7 +68,7 @@ const renderNotes = (notesElement) => {
   }
 };
 
-const clearNotesElement = () => {
+const clearNotesElement = (notesElement) => {
   while (notesElement.firstChild) {
     notesElement.removeChild(notesElement.firstChild);
   }
@@ -95,4 +83,14 @@ const replaceElementsClass = (element, tagClass) => {
   element.classList.add(tagClass);
 };
 
-export { renderNotes };
+const deleteSelectedNotes = (notesElement) => {
+  notes.getNotes().forEach((note) => {
+    if (note.selected) {
+      notes.removeNote(note.id);
+    }
+  });
+  clearNotesElement(notesElement)
+  renderNotes(notesElement)
+}
+
+export { renderNotes, deleteSelectedNotes };

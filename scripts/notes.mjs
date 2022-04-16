@@ -15,3 +15,9 @@ Notes.prototype.addNote = function (note) {
 Notes.prototype.getNotes = function () {
   return Notes.notes;
 };
+
+Notes.prototype.removeNote = function (selectedNoteId) {
+  const notes = Notes.notes.filter((note) => note.id != selectedNoteId);
+  console.log(Notes.notes);
+  Notes.notes = notes;
+};
