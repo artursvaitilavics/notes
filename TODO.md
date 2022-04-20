@@ -1,2 +1,7 @@
-- udate selection in Note object, once click on select
-- Delete button not deleting all notes, Could be because selecting element, doesn't actually update Notes.notes -> note.selected
+- Create sort by date functionality:
+    - means we need date and time value for each note
+- style each note caintainer:
+    - use icons for expand and delte
+    - make text area stretch to the end
+
+- Expand button on note should show whole text in input field - no clue, will take time

@@ -3,7 +3,11 @@ import {
   destroyNewNoteelement,
 } from "./scripts/new-note.mjs";
 
-import { renderNotes, deleteSelectedNotes } from "./scripts/notes-dom.mjs";
+import {
+  renderNotes,
+  deleteSelectedNotes,
+  renderFilteredNotes,
+} from "./scripts/notes-dom.mjs";
 
 import { Notes } from "./scripts/notes.mjs";
 
@@ -17,8 +21,7 @@ const button = {
 };
 
 const btnDelete = document.querySelector("#btn-delete-selected");
-
-
+const searchNoteInput = document.querySelector("#btn-search-note");
 
 button.btnNewNote.addEventListener("click", () => {
   button.clicked = !button.clicked;
@@ -45,6 +48,10 @@ renderNotes(notesElement);
 btnDelete.addEventListener("click", () => {
   deleteSelectedNotes(notesElement);
   console.log(notes.getNotes());
+});
+
+searchNoteInput.addEventListener("input", () => {
+  renderFilteredNotes(searchNoteInput.value, notesElement);
 });
 
 export { setNewButtonClicked, setNewButtonDefault, setNotClicked };

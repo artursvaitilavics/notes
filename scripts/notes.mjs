@@ -7,6 +7,8 @@ Notes.notes = [
   new Note(false, "I don't see how war is my fault."),
 ];
 
+Notes.filteredNotes = [];
+
 Notes.prototype.addNote = function (note) {
   Notes.notes.push(note);
   return Notes.notes;
@@ -29,3 +31,5 @@ Notes.prototype.setSelected = function (noteId) {
     }
   });
 };
+
+

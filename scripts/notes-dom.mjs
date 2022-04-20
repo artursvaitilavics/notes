@@ -2,7 +2,7 @@ import { Notes } from "./notes.mjs";
 
 const notes = new Notes();
 
-const temPNotes = notes.getNotes();
+// const filteredNotes = notes.fil();
 
 const createNoteDomElement = (note, notesElement) => {
   const noteElement = document.createElement("div");
@@ -70,6 +70,25 @@ const renderNotes = (notesElement) => {
   }
 };
 
+const renderFilteredNotes = (searchText, notesElement) => {
+  // const filteredNotes = notes.getNotes().filter((note) => {
+  //   return note.text.toLowerCase().includes(searchText.toLowerCase());
+  // });
+  clearNotesElement(notesElement);
+  try {
+    notes
+      .getNotes()
+      .filter((note) => {
+        return note.text.toLowerCase().includes(searchText.toLowerCase());
+      })
+      .forEach((note) => {
+        createNoteDomElement(note, notesElement);
+      });
+  } catch (error) {
+    console.log("My ERROR: Can't find Note!");
+  }
+};
+
 const clearNotesElement = (notesElement) => {
   while (notesElement.firstChild) {
     notesElement.removeChild(notesElement.firstChild);
@@ -95,4 +114,4 @@ const deleteSelectedNotes = (notesElement) => {
   renderNotes(notesElement);
 };
 
-export { renderNotes, deleteSelectedNotes };
+export { renderNotes, deleteSelectedNotes, renderFilteredNotes };
