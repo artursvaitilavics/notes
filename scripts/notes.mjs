@@ -21,3 +21,11 @@ Notes.prototype.removeNote = function (selectedNoteId) {
   console.log(Notes.notes);
   Notes.notes = notes;
 };
+
+Notes.prototype.setSelected = function (noteId) {
+  const note = Notes.notes.find((note) => {
+    if (note.id === noteId) {
+      note.selected = !note.selected;
+    }
+  });
+};

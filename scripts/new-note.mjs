@@ -1,6 +1,8 @@
 import { setNewButtonDefault, setNotClicked } from "../app.mjs";
 import { Note } from "./note.mjs";
 import { Notes } from "./notes.mjs";
+import { renderNotes } from "./notes-dom.mjs";
+
 // import { generateID } from "./generate-id.mjs";
 
 const containerElement = document.querySelector("#new-note");
@@ -30,8 +32,11 @@ const displayNewNoteElement = () => {
       const notes = new Notes();
 
 
+
       console.log("Before calling Notes");
       console.log(notes.addNote(note));
+      const notesElement = document.querySelector("#notes");
+      renderNotes(notesElement)
       console.log("After calling Notes");
       destroyNewNoteelement(setNewButtonDefault);
       setNotClicked();

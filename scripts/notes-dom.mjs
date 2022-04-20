@@ -32,6 +32,8 @@ const createNoteDomElement = (note, notesElement) => {
   checkboxElement.addEventListener("click", () => {
     selected = !selected;
     setSelected(selected);
+    notes.setSelected(note.id);
+    console.log(notes.getNotes());
   });
 
   // checkboxElement.checked = note.selected;
@@ -43,9 +45,8 @@ const createNoteDomElement = (note, notesElement) => {
   btnDeleteElement.innerHTML = "D"; //'should be proper imaga
 
   btnDeleteElement.addEventListener("click", (event) => {
-
     const noteId = event.target.parentNode.id;
-    notes.removeNote(noteId)
+    notes.removeNote(noteId);
     clearNotesElement(notesElement);
     renderNotes(notesElement);
   });
@@ -59,6 +60,7 @@ const createNoteDomElement = (note, notesElement) => {
 };
 
 const renderNotes = (notesElement) => {
+  clearNotesElement(notesElement);
   try {
     notes.getNotes().forEach((note) => {
       createNoteDomElement(note, notesElement);
@@ -89,8 +91,8 @@ const deleteSelectedNotes = (notesElement) => {
       notes.removeNote(note.id);
     }
   });
-  clearNotesElement(notesElement)
-  renderNotes(notesElement)
-}
+  clearNotesElement(notesElement);
+  renderNotes(notesElement);
+};
 
 export { renderNotes, deleteSelectedNotes };
