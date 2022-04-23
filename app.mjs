@@ -11,6 +11,7 @@ import {
 
 import { Notes } from "./scripts/notes.mjs";
 
+
 const notes = new Notes();
 // const btnNewNote = document.querySelector("#btn-new-note");
 const button = {
