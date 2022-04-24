@@ -8,6 +8,7 @@ Notes.notes = [
 ];
 
 Notes.filteredNotes = [];
+Notes.sorted = false;
 
 Notes.prototype.addNote = function (note) {
   Notes.notes.push(note);
@@ -32,4 +33,27 @@ Notes.prototype.setSelected = function (noteId) {
   });
 };
 
-
+Notes.prototype.sortByDate = function () {
+  console.log(Notes.notes)
+  Notes.sorted = !Notes.sorted;
+  const sortedNotes = [];
+  // console.log(Notes.sorted)
+  if (Notes.sorted) {
+    sortedNotes = Notes.notes.sort( (a, b) => {
+        if (a.creationDate.millisecond < b.creationDate.millisecond) {
+          return 1;
+        } else if (a.creationDate.millisecond > b.creationDate.millisecond) {
+          return -1;
+        }
+      });
+  } else {
+    sortedNotes = Notes.notes.sort((a, b) => {
+      if (a.creationDate.millisecond < b.creationDate.millisecond) {
+        return -1;
+      } else if (a.creationDate.millisecond > b.creationDate.millisecond) {
+        return 1;
+      }
+    });
+  }
+  return sortedNotes;
+};

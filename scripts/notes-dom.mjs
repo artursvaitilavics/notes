@@ -2,8 +2,6 @@ import { Notes } from "./notes.mjs";
 
 const notes = new Notes();
 
-// const filteredNotes = notes.fil();
-
 const createNoteDomElement = (note, notesElement) => {
   const noteElement = document.createElement("div");
   const checkboxElement = document.createElement("div");
@@ -36,7 +34,6 @@ const createNoteDomElement = (note, notesElement) => {
     console.log(notes.getNotes());
   });
 
-  // checkboxElement.checked = note.selected;
   textElement.value = note.text;
   btnExpandElement.id = "btn-expand";
   btnDeleteElement.classList.add("btn-delete");
@@ -71,9 +68,6 @@ const renderNotes = (notesElement) => {
 };
 
 const renderFilteredNotes = (searchText, notesElement) => {
-  // const filteredNotes = notes.getNotes().filter((note) => {
-  //   return note.text.toLowerCase().includes(searchText.toLowerCase());
-  // });
   clearNotesElement(notesElement);
   try {
     notes
@@ -95,6 +89,14 @@ const clearNotesElement = (notesElement) => {
   }
 };
 
+const renderSortedNotes = (notesElement) => {
+  clearNotesElement(notesElement);
+  // notes.sortByDate().forEach((note) => {
+  //   createNoteDomElement(note.notesElement);
+  // });
+  notes.sortByDate()
+};
+
 const addNoteToList = (newNote) => {
   notes.unshift(newNote);
 };
@@ -114,4 +116,9 @@ const deleteSelectedNotes = (notesElement) => {
   renderNotes(notesElement);
 };
 
-export { renderNotes, deleteSelectedNotes, renderFilteredNotes };
+export {
+  renderNotes,
+  deleteSelectedNotes,
+  renderFilteredNotes,
+  renderSortedNotes,
+};

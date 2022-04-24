@@ -7,10 +7,10 @@ import {
   renderNotes,
   deleteSelectedNotes,
   renderFilteredNotes,
+  renderSortedNotes,
 } from "./scripts/notes-dom.mjs";
 
 import { Notes } from "./scripts/notes.mjs";
-
 
 const notes = new Notes();
 // const btnNewNote = document.querySelector("#btn-new-note");
@@ -23,6 +23,7 @@ const button = {
 
 const btnDelete = document.querySelector("#btn-delete-selected");
 const searchNoteInput = document.querySelector("#btn-search-note");
+const sortByDate = document.querySelector("#btn-sort-by-date");
 
 button.btnNewNote.addEventListener("click", () => {
   button.clicked = !button.clicked;
@@ -37,9 +38,11 @@ button.btnNewNote.addEventListener("click", () => {
 const setNewButtonDefault = () => {
   button.btnNewNote.id = button.defaultId;
 };
+
 const setNewButtonClicked = () => {
   button.btnNewNote.id = button.clickedId;
 };
+
 const setNotClicked = () => {
   button.clicked = false;
 };
@@ -53,6 +56,10 @@ btnDelete.addEventListener("click", () => {
 
 searchNoteInput.addEventListener("input", () => {
   renderFilteredNotes(searchNoteInput.value, notesElement);
+});
+
+sortByDate.addEventListener("click", () => {
+  renderSortedNotes(notesElement);
 });
 
 export { setNewButtonClicked, setNewButtonDefault, setNotClicked };
