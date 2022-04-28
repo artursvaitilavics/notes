@@ -95,6 +95,7 @@ const renderSortedNotes = (notesElement) => {
   //   createNoteDomElement(note.notesElement);
   // });
   notes.sortByDate()
+  renderNotes(notesElement)
 };
 
 const addNoteToList = (newNote) => {

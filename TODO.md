@@ -1,4 +1,4 @@
-- Sort by date not working, something with notes.sortByDate()
+- Fix sorting issue for dates (Sort By Date)
 - Create sort by date functionality:
     - means we need date and time value for each note
 - style each note caintainer:
