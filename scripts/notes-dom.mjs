@@ -91,11 +91,11 @@ const clearNotesElement = (notesElement) => {
 
 const renderSortedNotes = (notesElement) => {
   clearNotesElement(notesElement);
-  // notes.sortByDate().forEach((note) => {
-  //   createNoteDomElement(note.notesElement);
-  // });
-  notes.sortByDate()
-  renderNotes(notesElement)
+
+  const notesToSort = notes.sortByDate();
+  notesToSort.forEach((note) => {
+    createNoteDomElement(note, notesElement);
+  });
 };
 
 const addNoteToList = (newNote) => {
