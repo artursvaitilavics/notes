@@ -2,9 +2,11 @@ import { setNewButtonDefault, setNotClicked } from "../app.mjs";
 import { Note } from "./note.mjs";
 import { Notes } from "./notes.mjs";
 import { renderNotes } from "./notes-dom.mjs";
+import { Storage } from "./storage.mjs";
 
 // import { generateID } from "./generate-id.mjs";
 
+const saveToLocalStorage = new Storage();
 const containerElement = document.querySelector("#new-note");
 const newNoteContainer = document.querySelector("#new-note-container");
 
@@ -27,24 +29,23 @@ const displayNewNoteElement = () => {
     btnSaveElement.id = "btn-save-note";
 
     btnSaveElement.addEventListener("click", () => {
-      // const generateId = 
       const note = new Note(false, textElement.value);
       const notes = new Notes();
 
-
-
-      console.log("Before calling Notes");
+      // console.log("Before calling Notes");
       console.log(notes.addNote(note));
       const notesElement = document.querySelector("#notes");
-      renderNotes(notesElement)
+      renderNotes(notesElement);
       console.log("After calling Notes");
       destroyNewNoteelement(setNewButtonDefault);
       setNotClicked();
+      saveToLocalStorage.save(notes.getNotes());
     });
 
     newNoteElement.appendChild(textElement);
     newNoteElement.appendChild(btnSaveElement);
     containerElement.appendChild(newNoteElement);
+    
   }
 };
 

@@ -11,9 +11,13 @@ import {
 } from "./scripts/notes-dom.mjs";
 
 import { Notes } from "./scripts/notes.mjs";
+// import { Storage } from "./scripts/storage.mjs";
 
+// const storage = new Storage();
 const notes = new Notes();
-// const btnNewNote = document.querySelector("#btn-new-note");
+
+// notes.setNotes(storage.read());
+
 const button = {
   btnNewNote: document.querySelector("#btn-new-note"),
   defaultId: "btn-new-note",
@@ -49,9 +53,10 @@ const setNotClicked = () => {
 
 const notesElement = document.querySelector("#notes");
 renderNotes(notesElement);
+
 btnDelete.addEventListener("click", () => {
   deleteSelectedNotes(notesElement);
-  console.log(notes.getNotes());
+  // console.log(notes.getNotes());
 });
 
 searchNoteInput.addEventListener("input", () => {

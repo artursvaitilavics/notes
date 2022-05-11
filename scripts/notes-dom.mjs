@@ -31,7 +31,7 @@ const createNoteDomElement = (note, notesElement) => {
     selected = !selected;
     setSelected(selected);
     notes.setSelected(note.id);
-    console.log(notes.getNotes());
+    // console.log(notes.getNotes());
   });
 
   textElement.value = note.text;
@@ -94,21 +94,14 @@ const renderSortedNotes = (notesElement) => {
 
   const notesToSort = notes.sortByDate();
   notesToSort.forEach((note) => {
+    console.log(note);
     createNoteDomElement(note, notesElement);
   });
 };
 
-const addNoteToList = (newNote) => {
-  notes.unshift(newNote);
-};
-
-const replaceElementsClass = (element, tagClass) => {
-  element.classList = [];
-  element.classList.add(tagClass);
-};
-
 const deleteSelectedNotes = (notesElement) => {
   notes.getNotes().forEach((note) => {
+    console.log(note.id);
     if (note.selected) {
       notes.removeNote(note.id);
     }
