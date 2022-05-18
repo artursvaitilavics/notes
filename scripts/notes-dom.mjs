@@ -94,14 +94,12 @@ const renderSortedNotes = (notesElement) => {
 
   const notesToSort = notes.sortByDate();
   notesToSort.forEach((note) => {
-    console.log(note);
     createNoteDomElement(note, notesElement);
   });
 };
 
 const deleteSelectedNotes = (notesElement) => {
   notes.getNotes().forEach((note) => {
-    console.log(note.id);
     if (note.selected) {
       notes.removeNote(note.id);
     }

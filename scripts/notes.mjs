@@ -41,13 +41,30 @@ Notes.prototype.sortByDate = function () {
   Notes.sorted = !Notes.sorted;
 
   let sortedNotes = [];
+
+
   if (Notes.sorted) {
-    sortedNotes = Notes.notes.sort((a, b) => a.creationDate - b.creationDate);
+    sortedNotes = Notes.notes.sort((a, b) => {
+      if (a.creationDate < b.creationDate) {
+        return -1;
+      } else if (a.creationDate > b.creationDate) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
   } else {
-    sortedNotes = Notes.notes.sort((a, b) => b.creationDate - a.creationDate);
+    sortedNotes = Notes.notes.sort((a, b) => {
+      if (a.creationDate > b.creationDate) {
+        return -1;
+      } else if (a.creationDate < b.creationDate) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
   }
-
-  // sortedNotes = Notes.notes.sort((a, b) => a.creationDate - b.creationDate);
-
   return sortedNotes;
 };
+
+
