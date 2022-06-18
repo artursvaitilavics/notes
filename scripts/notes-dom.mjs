@@ -5,6 +5,7 @@ const notes = new Notes();
 const createNoteDomElement = (note, notesElement) => {
   const noteElement = document.createElement("div");
   const checkboxElement = document.createElement("div");
+  // textElement should have event, that records changess
   const textElement = document.createElement("input");
   const btnExpandElement = document.createElement("button");
   const btnDeleteElement = document.createElement("button");
@@ -12,6 +13,7 @@ const createNoteDomElement = (note, notesElement) => {
   noteElement.classList.add("note-container");
   noteElement.id = note.id;
   checkboxElement.setAttribute("type", "checkbox");
+  textElement.classList.add("note-text");
 
   let selected = note.selected;
 

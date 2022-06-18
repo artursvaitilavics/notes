@@ -1,10 +1,14 @@
 .note-container {
   background-color: rgb(238, 240, 241);
   border-radius: 10px;
-  margin-top: 7px;
-  margin-bottom: 7px;
   width: 908px;
-  transform: translateX(-10px);
+  margin-top: 5px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* transform: translateX(-10px); */
   transition: all 0.3s;
 }
 
@@ -12,36 +16,39 @@
   background-color: rgb(221, 220, 220);
 }
 
-.selected, .unselected{
-  float: left;
-  width: 35px;
-  height: 35px;
-  margin-top: 5px;
-  margin-left: 5px;
-  border-radius: 5px;
+.note-container > * {
+  /* background-color: blue; */
+  
+  border-radius: 10px;
+  /* padding: 0px 0px 0px 0px; */
+  margin: 3px 3px 3px 3px;
+  /* margin: 0px 0px 0px 0px; */
+}
+
+.selected,
+.unselected {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
-.selected{
+.selected {
   background-color: aqua;
 }
-.unselected{
+.unselected {
   background-color: rgb(255, 255, 255);
 }
 
-/* .note-container > button,
-input {
-  width: 500px;
-  background-color: rgb(180, 180, 180);
-  padding: 5px 5px 5px 5px;
-  margin: 5px 5px 5px 5px;
-} */
 
-.note-container > input{
-  /* background-color: yellow; */
-  flex-grow: 3;
+
+
+.note-text {
+ flex-grow: 3;
 }
 
+
 .note-container > button {
-  width: 40px;
+  /* flex-shrink: 2; */
+  width: 35px;
+  height: 35px;
 }
